@@ -6,13 +6,22 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+
+
 public class Main {
+    private static String resource = "task2/animals.txt";
+    private static String resultA = "task2/output/resultA.txt";
+    private static String resultB = "task2/output/resultB.txt";
+    private static String resultC = "task2/output/resultC.txt";
+
+
     public static void main(String[] args) throws IOException{
         List<Animal> animals = null;
-        try (FileReader fileR = new FileReader("resources/animals.txt")) {
+        try (FileReader fileR = new FileReader(resource)) {
             animals = readFromFile(fileR);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Ошибка при открытии или чтении файла");
+            return;
         }
 
         assert animals != null;
@@ -25,17 +34,17 @@ public class Main {
                             .append(animal.getName()).append(" ")
                             .append(animal.getFoodType()).append(" ")
                             .append(animal.getFoodAmount()).append("\n"));
-        writeInfo("output/resultA.txt", result1.toString());
+        writeInfo(resultA, result1.toString());
 
         if (sortedList.size() >= 5) {
             StringBuilder result2 = new StringBuilder("Task b:\n");
             sortedList.stream().limit(5).forEach(animal -> result2.append(animal.getName()).append("\n"));
-            writeInfo("output/resultB.txt",  String.format(" %s", result2.toString()));
+            writeInfo(resultB,  String.format(" %s", result2.toString()));
         }
         if (sortedList.size() >= 3){
         StringBuilder result3 = new StringBuilder("Task c:\n");
         sortedList.stream().skip(sortedList.size() - 3).forEach(animal -> result3.append(animal.getId()).append("\n"));
-        writeInfo("output/resultC.txt",  String.format(" %s", result3.toString()));
+        writeInfo(resultC,  String.format(" %s", result3.toString()));
     }
     }
 
@@ -65,7 +74,7 @@ public class Main {
                 }
 
                 default: {
-                    throw new IllegalArgumentException("Information has invalid data format");
+                    throw new IllegalArgumentException("Information about this animal has invalid data format");
                 }
             }
         }
