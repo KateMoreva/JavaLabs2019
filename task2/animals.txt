@@ -1,0 +1,3 @@
+Carnivorous Lion 1 24
+Herbivorous Giraffe 5 90
+Omnivorous Pig 1 3

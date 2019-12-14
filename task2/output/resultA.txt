@@ -1,0 +1,4 @@
+Task a:
+1 Giraffe PLANTS 450
+0 Lion ANIMALS 24
+2 Pig EVERYTHING 3

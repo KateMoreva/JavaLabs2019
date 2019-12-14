@@ -1,0 +1,6 @@
+ Task b:
+Giraffe
+Human
+Bars
+Lion
+Pig
